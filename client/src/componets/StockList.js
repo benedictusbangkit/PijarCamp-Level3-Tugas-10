@@ -14,7 +14,7 @@ const StockList = () => {
     }
     const deleteStock = async ()=>{
         try {
-            await axios.delete(`http://localhost:21017/stocks/${id}`);
+            await axios.delete(`http://localhost:27017/stocks/${id}`);
             getStock();
         } catch (error) {
             console.log(error); 
@@ -22,11 +22,12 @@ const StockList = () => {
     }
   return (
     <div className='columns'>
-        <div to="/add" className='column is-half'>
-            <Link className="button is-success">Add New</Link>
+        <div className='column is-half'>
+            <Link to="/add" className="button is-success">Add New</Link>
             <table className='table is-striped is-fullwidth mt-5'>
                 <thead>
                     <tr>
+                        <th>No</th>
                         <th>Nama Produk</th>
                         <th>Keterangan</th>
                         <th>Harga</th>
@@ -44,7 +45,7 @@ const StockList = () => {
                         <td>{stock.jumlah}</td>
                         <td>
                             <Link to={`edit/${stock._id}`} className='buttton is-info is-small'>Edit</Link>
-                            <button onClick={()=> deleteStock(stock._id)} className='buttton is-danger is-small'>Deletet</button>
+                            <button onClick={()=> deleteStock(stock._id)} className='buttton is-danger is-small'>Delete</button>
                         </td>
                     </tr>
                     ))}
